@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Bootstrap to Thymeleaf</title>
+    <!-- Latest compiled and minified CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+
+                <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:if="${user.role}=='ADMIN'">Update</a>
+                        <a class="btn btn-danger" th:if="${user.role}=='ADMIN'">Delete</a>
+                        <a class="btn btn-primary" th:unless="${user.role}=='ADMIN'">View</a>
+
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
